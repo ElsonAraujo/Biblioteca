@@ -9,6 +9,11 @@ namespace Biblioteca.Models.Repositories
 {
     public class LivroRepository : ILivroRepository
     {
+        public void Registar(LivroDto livro)
+        {
+            ContextDataFake.Livros.Add(livro);
+        }
+
         public List<LivroDto> Listar()
         {
             var livros = ContextDataFake.Livros;
@@ -17,5 +22,7 @@ namespace Biblioteca.Models.Repositories
                     .ToList();
 
         }
+
+        
     }
 }

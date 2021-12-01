@@ -1,4 +1,5 @@
 ﻿using Biblioteca.Models.Contracts.Services;
+using Biblioteca.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,27 @@ namespace Biblioteca.Controllers
                 throw ex;
             }
             
+        }
+
+        public ActionResult Create() // quando carregar no create , é mandada para a
+        {
+            return View();
+        }
+         
+        [HttpPost]   // não podemos ter metodos com o mesmo nome, mas é válido com assinaturas diferentes
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Nome, Autor, Editora")] LivroDto livro)
+        {
+            try
+            {
+                _livroService.Registar(livro);
+                return RedirectToAction("List");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+ 
         }
     }
 }

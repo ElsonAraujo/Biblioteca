@@ -17,6 +17,17 @@ namespace Biblioteca.Models.Services
             _livroRepository = livroRepository;
         }
 
+        public void Registar(LivroDto livro)
+        {
+            try
+            {
+                _livroRepository.Registar(livro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<LivroDto> Listar()
         {
             try
@@ -28,5 +39,7 @@ namespace Biblioteca.Models.Services
                 throw ex;
             }
         }
+
+       
     }
 }

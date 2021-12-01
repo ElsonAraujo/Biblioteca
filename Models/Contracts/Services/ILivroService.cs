@@ -8,6 +8,7 @@ namespace Biblioteca.Models.Contracts.Services
 {
     public interface ILivroService
     {
+        void Registar(LivroDto livro);
         List<LivroDto> Listar();
     }
 }
